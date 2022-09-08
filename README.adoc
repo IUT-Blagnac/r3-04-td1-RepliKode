@@ -1,7 +1,5 @@
 = Compiler et construire ses applications avec maven
-Jean-Michel Bruel <jbruel@gmail.com>
-v22.1, 2022-09-04 : BUT 2 version
-//v1, 2022-02-20 : Initial draft
+Hugo Wendjaneh <hugo.wendjaneh@gmail.com>
 :icons: font
 :diagrams: .
 :experimental:
@@ -26,12 +24,6 @@ ifdef::env-github[]
 endif::[]
 
 //---------------------------------------------------------------
-
-Ce TP vise à être capable de compiler un fichier Java sans être dépendant de son IDE favori.
-Cela permet :
-
-- d'être indépendant de tout IDE
-- de faire construire l'application de manière automatique (c'est pour plus tard, mais c'est ce qu'on appelle l'intégration continue)
 
 == Mise en place
 
@@ -59,7 +51,7 @@ Vous pouvez aussi importer dans eclipse votre projet maven puis faire exécuter 
 
 == C'est parti
 
-=== 1ère compilation : erreur de comilation
+=== 1ère compilation
 
 WARNING: Les étapes suivantes utilisent les commandes {maven} en ligne de commande, c'est à dire à taper dans un terminal linux, mais vous pouvez utiliser l'équivalent en "click de souris" de votre IDE favori.
 
@@ -69,40 +61,14 @@ C'est une bonne habitude à prendre (de nettoyer tout ce qui a pu se passer avan
 +
 . Lancer `mvn compile`
 +
-Observez l'erreur de compilation qui en résulte.
-Par exemple :
+Résultat :
 +
-.Erreur de compilation
-image::error1.png["Erreur de compilation", width=80%]
-+
-. Corrigez le code en conséquence.
-+
-.Erreur corrigée
+.Compilation faite
 image::success1.png["Erreur éliminée", width=80%]
 +
-. Observez la création du répertoire `target` qui contient entre autre la version compilée `HelloJava.class` dans le répertoire `target/classes`.
+. Observez la création du répertoire `target` qui contient entre autre la version compilée `(Nom de votre classe)` dans le répertoire `target/classes`.
 
 === 2ème compilation : construire une application
-
-On ne peut malheureusement pas exécuter d'application puisqu'on n'a pas de main.
-
-. Ajoutez un `main` dans la classe.
-+
-[%collapsible]
-====
-[source,java]
-----
-class HelloJava {	
-        public static void main(String[] args) {
-		System.out.println("Hello Blagnac");
-	}
-
-	public void afficherCancan(){
-	}
-}
-----
-====
-+
 . Une fois que vous avez réussi à compiler (`mvn compile`), lancez la fabrication d'une version exécutable :
 +
 ....
@@ -117,15 +83,11 @@ java -jar target/tp_qualite-1.0.jar
 .Et voilà!
 image::success2.png["Ca run!", width=80%]
 
-== Améliorations
+== Générer la javadoc
+. Lancer `mvn javadoc:javadoc`
 
-. Reprenez un de vos exercices précédents et mettez les sources dans `src/java`.
-. Ajustez éventuellement le `pom.xml` pour que les étapes précédentes produisent les résultats escomptés. Pensez à vérifier que votre fichier .jar est exécutable. Que devez-vous corriger dans votre pom.xml ? Quelle est la commande pour le lancer ?
-. Ajoutez les commentaires vus en dev.
-. Cherchez dans la documentation {maven} les commandes permettant de générer une documentation javadoc, et les adaptions à faire sur votre projet (et éventuellement `pom.xml`) afin que {maven} génère la documentation automatiquement pour vous.
-. Documentez votre projet: remplacez le contenu de ce fichier README.doc par les instructions de compilation, de documentation et de lancement de votre projet. 
+image::javadoc.png["Javadoc créé", width=80%]
 
-== Consignes et rendus
+. La javadoc est maintenent créé et ce trouve dans votre dossier `target/site/apidocs`.
 
-Pour ce TP, il vous faudra simplement rendre le projet complet (`src`) ainsi que la dernière version du fichier `pom.xml` sur votre dépôt et la javadoc de votre code.
-
+. Vous pouvez lancer le fichier `index.html`

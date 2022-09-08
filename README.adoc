@@ -1,5 +1,5 @@
 = Compiler et construire ses applications avec maven
-Hugo Wendjaneh <hugo.wendjaneh@gmail.com>
+Hugo Wendjaneh <hugo.wendjaneh@gmail.com> | Vincent Miqueu-Denjean <vincent.miqueu@gmail.com>
 :icons: font
 :diagrams: .
 :experimental:
